@@ -7,6 +7,10 @@ if ( ! isset( $argv[1] ) || ! $argv[1] || ! is_readable( $argv[1] ) ) {
 
 $readme_path = $argv[1];
 
+// As the original is not well coded we need to suppress some things.
+error_reporting(0);
+ini_set('display_errors', 0);
+
 require_once __DIR__ . '/../src/parse-readme.php';
 
 $parser = new WordPress_Readme_Parser();
@@ -48,19 +52,20 @@ function validate_readme( $result ) {
 
 
 	// notes
-	if ( ! isset( $result['sections'] ) || ! $result['sections']['installation'] ) {
+	if ( ! isset( $result['sections']['installation'] ) || ! $result['sections']['installation'] ) {
 		$notes[] = 'No == Installation == section was found';
 	}
-	if ( ! isset( $result['sections'] ) || ! $result['sections']['frequently_asked_questions'] ) {
+	if ( ! isset( $result['sections']['frequently_asked_questions'] )
+	     || ! $result['sections']['frequently_asked_questions'] ) {
 		$notes[] = 'No == Frequently Asked Questions == section was found';
 	}
-	if ( ! isset( $result['sections'] ) || ! $result['sections']['changelog'] ) {
+	if ( ! isset( $result['sections']['changelog'] ) || ! $result['sections']['changelog'] ) {
 		$notes[] = 'No == Changelog == section was found';
 	}
 	if ( ! isset( $result['upgrade_notice'] ) || ! $result['upgrade_notice'] ) {
 		$notes[] = 'No == Upgrade Notice == section was found';
 	}
-	if ( ! isset( $result['sections'] ) || ! $result['sections']['screenshots'] ) {
+	if ( ! isset( $result['sections']['screenshots'] ) || ! $result['sections']['screenshots'] ) {
 		$notes[] = 'No == Screenshots == section was found';
 	}
 //	if ( ! isset( $result['donate_link'] ) || ! $result['donate_link'] ) {
@@ -82,7 +87,7 @@ if ( ! $messages['warnings'] && ! $messages['fatal_errors'] && ! $messages['note
 }
 
 function show_block($head, $messages) {
-	echo $head . ': ' . PHP_EOL . '  - ' . implode( PHP_EOL . '  - ', $messages );
+	echo PHP_EOL . $head . ': ' . PHP_EOL . '  - ' . implode( PHP_EOL . '  - ', $messages );
 }
 
 // something is wrong => code 1
