@@ -85,7 +85,7 @@ Class WordPress_Readme_Parser {
 
 		// Donate Link: URL
 		if ( preg_match('|Donate link:(.*)|i', $file_contents, $_donate_link) )
-			$donate_link = esc_url( $_donate_link[1] );
+			$donate_link = $_donate_link[1];
 		else
 			$donate_link = NULL;
 
@@ -228,7 +228,7 @@ Class WordPress_Readme_Parser {
 
 	function sanitize_text( $text ) { // not fancy
 		$text = strip_tags($text);
-		$text = esc_html($text);
+		$text = $text;
 		$text = trim($text);
 		return $text;
 	}
