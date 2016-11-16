@@ -63,9 +63,9 @@ function validate_readme( $result ) {
 	if ( ! isset( $result['sections'] ) || ! $result['sections']['screenshots'] ) {
 		$notes[] = 'No == Screenshots == section was found';
 	}
-	if ( ! isset( $result['donate_link'] ) || ! $result['donate_link'] ) {
-		$notes[] = 'No donate link was found';
-	}
+//	if ( ! isset( $result['donate_link'] ) || ! $result['donate_link'] ) {
+//		$notes[] = 'No donate link was found';
+//	}
 
 	return array(
 		'warnings'     => $warnings,
