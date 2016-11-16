@@ -1,0 +1,13 @@
+{
+    "name": "sourcerer-mike/wp-readme-validator",
+    "description": "Validate the README.md and .txt against WordPress Standards",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mike Pretzlaw",
+            "email": "kontakt@mike-pretzlaw.de"
+        }
+    ],
+    "require": {}
+}
